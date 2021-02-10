@@ -1,20 +1,21 @@
-import React from 'react';
-import Navbar from '../components/Navbar';
+import React, { Fragment } from 'react';
 import badge from '../images/badge-header.svg';
 import './styles/BadgeNew.css';
 import Badge from '../components/Badge';
 import BadgeForm from '../components/BadgeForm';
 
 class BadgeNew extends React.Component {
-    state = {form: {
-        firstName: "",
-        lastName: "",
-        email: "",
-        jobTitle: "",
-        twitter: ""
-    } };
+    state = {
+        form: {
+            firstName: "",
+            lastName: "",
+            email: "",
+            jobTitle: "",
+            twitter: ""
+        }
+    };
 
-    handleChange= e =>{
+    handleChange = e => {
         this.setState({
             form: {
                 ...this.state.form,
@@ -22,18 +23,17 @@ class BadgeNew extends React.Component {
             },
         });
     };
-    render(){
-        return( 
-            <div>
-                <Navbar />
+    render() {
+        return (
+            <Fragment>
                 <div className="BadgeNew__hero">
-                    <img className="img_fluid" src={badge} alt="Logo"/>
+                    <img className="img_fluid" src={badge} alt="Logo" />
                 </div>
                 <div className="container">
                     <div className="row">
                         <div className="col-6">
-                            <Badge 
-                                firstName={this.state.form.firstName} 
+                            <Badge
+                                firstName={this.state.form.firstName}
                                 lastName={this.state.form.lastName}
                                 jobTitle={this.state.form.jobTitle}
                                 twitter={this.state.form.twitter}
@@ -42,14 +42,14 @@ class BadgeNew extends React.Component {
                             />
                         </div>
                         <div className="col-6">
-                            <BadgeForm 
+                            <BadgeForm
                                 onChange={this.handleChange}
                                 formValues={this.state.form}
                             />
                         </div>
                     </div>
                 </div>
-            </div>
+            </Fragment>
         )
     }
 }
