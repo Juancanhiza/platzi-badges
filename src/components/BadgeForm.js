@@ -1,6 +1,6 @@
 import React from 'react';
 
-class BadgeForm extends React.Component{
+class BadgeForm extends React.Component {
     /* state = {}; */
     /* handleChange= (e) =>{
         this.setState({
@@ -8,38 +8,37 @@ class BadgeForm extends React.Component{
         });
     }; */
 
-    handleClick= (e) =>{
+    handleClick = (e) => {
         console.log("Botton was clicked");
     };
-    
-    handleSubmit= (e) =>{
-        e.preventDefault();
-        console.log("Form was submited");
-        console.log(this.state);
-    };
 
-    render(){
+    // handleSubmit= (e) =>{
+    //     e.preventDefault();
+    //     console.log("Form was submited");
+    //     console.log(this.state);
+    // };
+
+    render() {
         return (
             <div>
-                <h1>New Attendant</h1>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.props.onSubmit}>
                     <div className="form-group">
                         <label>First Name</label>
-                        <input 
-                            onChange={this.props.onChange} 
-                            className="form-control" 
-                            type="text" 
+                        <input
+                            onChange={this.props.onChange}
+                            className="form-control"
+                            type="text"
                             name="firstName"
-                            value={this.props.formValues.firstname}
+                            value={this.props.formValues.firstName}
                         ></input>
                     </div>
 
                     <div className="form-group">
                         <label>Last Name</label>
-                        <input 
-                            onChange={this.props.onChange} 
-                            className="form-control" 
-                            type="text" 
+                        <input
+                            onChange={this.props.onChange}
+                            className="form-control"
+                            type="text"
                             name="lastName"
                             value={this.props.formValues.lastName}
                         ></input>
@@ -47,10 +46,10 @@ class BadgeForm extends React.Component{
 
                     <div className="form-group">
                         <label>Email</label>
-                        <input 
-                            onChange={this.props.onChange} 
-                            className="form-control" 
-                            type="email" 
+                        <input
+                            onChange={this.props.onChange}
+                            className="form-control"
+                            type="email"
                             name="email"
                             value={this.props.formValues.email}
                         ></input>
@@ -59,9 +58,9 @@ class BadgeForm extends React.Component{
                     <div className="form-group">
                         <label>Job Title</label>
                         <input
-                            onChange={this.props.onChange} 
-                            className="form-control" 
-                            type="text" 
+                            onChange={this.props.onChange}
+                            className="form-control"
+                            type="text"
                             name="jobTitle"
                             value={this.props.formValues.jobTitle}
                         ></input>
@@ -70,15 +69,19 @@ class BadgeForm extends React.Component{
                     <div className="form-group">
                         <label>Twitter</label>
                         <input
-                            onChange={this.props.onChange} 
-                            className="form-control" 
-                            type="text" 
+                            onChange={this.props.onChange}
+                            className="form-control"
+                            type="text"
                             name="twitter"
                             value={this.props.formValues.twitter}
                         ></input>
                     </div>
 
                     <button onClick={this.handleClick} className="btn btn-primary">Save</button>
+
+                    {this.props.error && (
+                        <p className="text-danger">{this.props.error.message}</p>
+                    )}
                 </form>
             </div>
         )
